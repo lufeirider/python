@@ -23,3 +23,5 @@ for i in range(0,256):
     if(re.search('qq123456',res)):
         print 'chr(%d)' % i
         print res
+        
+        
