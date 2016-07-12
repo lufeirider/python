@@ -46,7 +46,7 @@ flag = 1
 c = initCurl()
 
 while(flag):
-    html = GetDate(c, ("https://www.zoomeye.org/search?q=APMServ%205.2.6&p={0}&t=host").format(pn))
+    html = GetDate(c, ("https://www.zoomeye.org/search?q=APMServ%205.2.6%20country%3AChina%20port:80&p={0}&t=host").format(pn))
     pn = pn + 1
     
     html = unicode(html, 'utf-8','ignore')
@@ -65,4 +65,4 @@ while(flag):
     for a in As:
         wx("zoomeye.txt", a.string+"\n")
         print a.string
-    time.sleep(1)
+    time.sleep(2)
