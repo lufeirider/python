@@ -7,6 +7,7 @@ import pycurl
 import StringIO
 import urllib
 import certifi
+import time
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -62,5 +63,6 @@ while(flag):
     As = soup.findAll("a",{"class":re.compile("ip")})
     
     for a in As:
-        wx("zoomeye.txt", a.string)
+        wx("zoomeye.txt", a.string+"\n")
         print a.string
+    time.sleep(1)
