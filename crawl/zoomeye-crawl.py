@@ -29,7 +29,7 @@ def GetDate(curl, url):
     r=random.randint(0,11)
     
     head = ["User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36",
-            "Cookie: __jsluid=f608f2b6ab98ed247f42c68a9e05ebf1; csrftoken=bFL4Gzx7m2SZE3OzCo83gPELcHJQyZYU; sessionid=i0x8r978nw1l1s8k8m68d19urdr8thb0; __jsl_clearance=1468313264.982|0|OlZxLoM%2BSfoJ0paeGsszQFz3JGg%3D; Hm_lvt_e58da53564b1ec3fb2539178e6db042e=1467966546,1468215754,1468248863,1468304365; Hm_lpvt_e58da53564b1ec3fb2539178e6db042e=1468313270"]
+            "Cookie: __jsluid=f608f2b6ab98ed247f42c68a9e05ebf1; csrftoken=bFL4Gzx7m2SZE3OzCo83gPELcHJQyZYU; sessionid=i0x8r978nw1l1s8k8m68d19urdr8thb0; __jsl_clearance=1468316989.499|0|aqESBkoy0wKVep%2BzmdSWKYZJQk8%3D; Hm_lvt_e58da53564b1ec3fb2539178e6db042e=1467966546,1468215754,1468248863,1468304365; Hm_lpvt_e58da53564b1ec3fb2539178e6db042e=1468317014"]
     buf = StringIO.StringIO()
     curl.setopt(pycurl.WRITEFUNCTION, buf.write)
     curl.setopt(pycurl.CAINFO, certifi.where())
@@ -47,7 +47,7 @@ def wx(filename,context):
     f.close()
 
 
-pn = 31
+pn = 1
 flag = 1
 
 
@@ -58,7 +58,7 @@ while(flag):
     pn = pn + 1
     
     html = unicode(html, 'utf-8','ignore')
-    
+    #print html
     soup = BeautifulSoup(html,"html.parser",from_encoding="utf-8")
     
     
@@ -73,4 +73,4 @@ while(flag):
     for a in As:
         wx("zoomeye.txt", a.string+"\n")
         print a.string
-    time.sleep(random.uniform(5,20))
+    time.sleep(random.uniform(2,5))
