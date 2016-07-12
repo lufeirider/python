@@ -23,7 +23,7 @@ def initCurl():
 
 def GetDate(curl, url):
     head = ["User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36",
-            "Cookie: __jsluid=f608f2b6ab98ed247f42c68a9e05ebf1; __jsl_clearance=1468249118.269|0|KcPxOxfchLmUYR%2BKiF6GtghUbug%3D;"]
+            "Cookie: __jsluid=f608f2b6ab98ed247f42c68a9e05ebf1; csrftoken=bFL4Gzx7m2SZE3OzCo83gPELcHJQyZYU; sessionid=i0x8r978nw1l1s8k8m68d19urdr8thb0; __jsl_clearance=1468304384.174|0|8yxLmZYzVcVY1KIxa0cClTLi%2BWY%3D; Hm_lvt_e58da53564b1ec3fb2539178e6db042e=1467966546,1468215754,1468248863,1468304365; Hm_lpvt_e58da53564b1ec3fb2539178e6db042e=1468304758"]
     buf = StringIO.StringIO()
     curl.setopt(pycurl.WRITEFUNCTION, buf.write)
     curl.setopt(pycurl.CAINFO, certifi.where())
@@ -34,13 +34,18 @@ def GetDate(curl, url):
     buf.close()
     return the_page
 
+def wx(filename,context):
+    f= file(filename,"a+")
+    f.write(context)
+    f.close()
+
+
 pn = 1
 flag = 1
 c = initCurl()
 
 while(flag):
-    
-    html = GetDate(c, ("https://www.zoomeye.org/search?q=APMServ%20.5.2.6%20port%3A9000&p={0}&t=host").format(pn))
+    html = GetDate(c, ("https://www.zoomeye.org/search?q=APMServ%205.2.6&p={0}&t=host").format(pn))
     pn = pn + 1
     
     html = unicode(html, 'utf-8','ignore')
@@ -57,4 +62,5 @@ while(flag):
     As = soup.findAll("a",{"class":re.compile("ip")})
     
     for a in As:
+        wx("zoomeye.txt", a.string)
         print a.string
