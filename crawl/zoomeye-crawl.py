@@ -47,11 +47,11 @@ def wx(filename,context):
     f.close()
 
 
-pn = 1
+pn = 31
 flag = 1
 
 
-while(flag and pn!=20):
+while(flag):
     print "pn              {0}".format(pn)
     c = initCurl()
     html = GetDate(c, ("https://www.zoomeye.org/search?q=APMServ%205.2.6%20country%3AChina%20port:80&p={0}&t=host").format(pn))
@@ -73,4 +73,4 @@ while(flag and pn!=20):
     for a in As:
         wx("zoomeye.txt", a.string+"\n")
         print a.string
-    time.sleep(random.uniform(1,3))
+    time.sleep(random.uniform(5,20))
